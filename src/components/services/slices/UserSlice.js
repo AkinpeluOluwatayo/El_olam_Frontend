@@ -18,11 +18,10 @@ const userSlice = createSlice({
             state.userInfo = null;
             state.isAuthenticated = false;
             localStorage.removeItem('userInfo');
+
         },
     },
 });
 
-
 export const { setCredentials, logout } = userSlice.actions;
-
 export default userSlice.reducer;
