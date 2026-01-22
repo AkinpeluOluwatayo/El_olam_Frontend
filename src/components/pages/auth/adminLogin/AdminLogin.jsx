@@ -70,8 +70,8 @@ const AdminLogin = () => {
                     </div>
                 </div>
 
-                <h1 className="text-4xl font-semibold text-slate-800 mb-2 tracking-tight">Admin Login</h1>
-                <p className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-10">CEO & Director Portal</p>
+                <h1 className="text-4xl font-semibold text-slate-800 mb-2 tracking-tight">ADMIN LOGIN</h1>
+                <p className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-10">Authorized Personnel</p>
 
                 <form className="space-y-4" onSubmit={handleSubmit}>
                     <div className="relative">

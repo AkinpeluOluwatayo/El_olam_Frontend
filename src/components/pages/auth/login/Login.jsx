@@ -62,7 +62,10 @@ const Login = () => {
                     </div>
                 </div>
 
-                <h1 className="text-4xl font-semibold text-slate-800 mb-10 tracking-tight">Parent Login</h1>
+                <h1 className="text-4xl font-semibold text-slate-800 mb-10 tracking-tight">PARENT LOGIN</h1>
+
+                <p className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-5">Enter email and password</p>
+
 
                 <form className="space-y-4" onSubmit={handleSubmit}>
                     <div className="relative">

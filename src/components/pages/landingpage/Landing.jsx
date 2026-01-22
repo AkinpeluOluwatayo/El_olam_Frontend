@@ -158,7 +158,7 @@ const LandingPage = () => {
                                         {slide.desc}
                                     </p>
                                     <button className="bg-sky-500 text-white px-8 py-3.5 rounded-full font-black flex items-center gap-2 uppercase text-[11px] tracking-widest shadow-xl shadow-sky-500/30 active:scale-95 transition-transform">
-                                        Explore More <ArrowRight size={18}/>
+                                       Ability In Disability
                                     </button>
                                 </div>
                             </SwiperSlide>
@@ -232,7 +232,7 @@ const LandingPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
                         <div>
                             <img src="/images/elolamLogo.png" alt="Logo" className="h-8 mb-6 brightness-200 mx-auto md:mx-0" />
-                            <h4 className="text-white font-black text-lg mb-4 leading-tight uppercase tracking-tight">El-Olam Special Home</h4>
+                            <h4 className="text-white font-black text-lg mb-4 leading-tight uppercase tracking-tight">El-Olam Special Home & Rehabilitation Center</h4>
                             <p className="text-sm font-medium max-w-xs mx-auto md:mx-0">Nurturing environments where special needs children flourish.</p>
                         </div>
                         <div className="flex flex-col md:items-end">

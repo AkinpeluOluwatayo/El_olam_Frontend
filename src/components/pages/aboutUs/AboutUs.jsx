@@ -105,7 +105,7 @@ const AboutUs = () => {
                         </div>
                         <h2 className="text-3xl font-black text-slate-900 mb-4 tracking-tight">Our Mission</h2>
                         <p className="text-slate-600 leading-relaxed font-medium">
-                            To provide compassionate care and specialized rehabilitation for children with neurodiverse needs, fostering an inclusive environment where every child is empowered to achieve their full potential.
+                           To support children and adult with disabilities to achieve their optimal level of independence and enhance innovative services, education and community integration.
                         </p>
                     </motion.div>
 
@@ -115,7 +115,17 @@ const AboutUs = () => {
                         </div>
                         <h2 className="text-3xl font-black mb-4 tracking-tight">Our Vision</h2>
                         <p className="text-slate-400 leading-relaxed font-medium">
-                            To be a leading center in Africa, recognized for excellence in neurodiverse care, creating a world where every special needs child is seen, heard, and celebrated.
+                           Will be a recognized pacesetter and dependable brand in delivering best practices and achieving successful outcomes for children and adults with disabilities in the society.
+                        </p>
+                    </motion.div>
+
+                    <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="bg-slate-900 p-10 rounded-[3rem] text-white shadow-2xl">
+                        <div className="w-14 h-14 bg-white text-slate-900 rounded-2xl flex items-center justify-center mb-6">
+                            <Eye size={28} />
+                        </div>
+                        <h2 className="text-3xl font-black mb-4 tracking-tight">Our Values</h2>
+                        <p className="text-slate-400 leading-relaxed font-medium">
+                        Each child has the right to ACCEPTANCE, EMPOWERMENT, OPPORTUNITIES, and INDEPENDENCE
                         </p>
                     </motion.div>
                 </div>
