@@ -17,7 +17,6 @@ function App() {
 
     return (
         <Router>
-            {/* Standard Toaster configuration */}
             <Toaster position="top-center" reverseOrder={false} />
 
             <Routes>
@@ -54,12 +53,13 @@ function App() {
                 <Route
                     path="/parent/dashboard"
                     element={
-                        isAuthenticated && userInfo?.role === 'PARENT'
+                        isAuthenticated && (userInfo?.role === 'PARENT' || userInfo?.role === 'ROLE_PARENT')
                             ? <ParentDashboard />
                             : <Navigate to="/login" replace />
                     }
                 />
 
+                {/* Fallback to Landing */}
                 <Route path="*" element={<Landing />} />
             </Routes>
         </Router>

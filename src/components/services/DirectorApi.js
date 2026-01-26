@@ -10,15 +10,17 @@ export const directorApi = createApi({
             return headers;
         },
     }),
-    tagTypes: ['Child', 'User', 'Report', 'Media', 'Inventory'],
+    // Sync with CEO: 'Children' and 'Users' (Plural)
+    tagTypes: ['Children', 'Users', 'Report', 'Media', 'Inventory', 'LatestReport'],
     endpoints: (builder) => ({
+        // --- Child Management ---
         enrollChild: builder.mutation({
             query: (data) => ({ url: '/children/enroll', method: 'POST', body: data }),
-            invalidatesTags: ['Child'],
+            invalidatesTags: ['Children'],
         }),
         getAllChildren: builder.query({
             query: () => '/children/all',
-            providesTags: ['Child'],
+            providesTags: ['Children'],
         }),
         updateChild: builder.mutation({
             query: ({ childId, ...data }) => ({
@@ -26,31 +28,39 @@ export const directorApi = createApi({
                 method: 'PUT',
                 body: data,
             }),
-            invalidatesTags: ['Child'],
+            invalidatesTags: ['Children'],
         }),
         removeChild: builder.mutation({
             query: (id) => ({ url: `/children/remove/${id}`, method: 'DELETE' }),
-            invalidatesTags: ['Child'],
+            invalidatesTags: ['Children'],
         }),
+
+        // --- Parent Onboarding ---
         onboardParent: builder.mutation({
             query: ({ childId, ...data }) => ({
                 url: `/auth/onboard-parent/${childId}`,
                 method: 'POST',
                 body: data
             }),
-            invalidatesTags: ['User', 'Child'],
+            invalidatesTags: ['Users', 'Children'], // Updates both staff list and child record
         }),
+
+        // --- Reports & Media ---
         addReport: builder.mutation({
             query: (data) => ({ url: '/reports/create', method: 'POST', body: data }),
-            invalidatesTags: ['Report'],
+            invalidatesTags: ['Report', 'LatestReport'],
         }),
         getChildReports: builder.query({
             query: (childId) => `/reports/child/${childId}`,
             providesTags: ['Report'],
         }),
         uploadMedia: builder.mutation({
-            query: (data) => ({ url: '/media/upload', method: 'POST', body: data }),
-            invalidatesTags: ['Media'],
+            query: (formData) => ({
+                url: '/media/upload',
+                method: 'POST',
+                body: formData
+            }),
+            invalidatesTags: ['Media', 'LatestReport'],
         }),
         getChildMedia: builder.query({
             query: (childId) => `/media/child/${childId}`,
@@ -60,6 +70,8 @@ export const directorApi = createApi({
             query: (mediaId) => ({ url: `/media/delete/${mediaId}`, method: 'DELETE' }),
             invalidatesTags: ['Media'],
         }),
+
+        // --- Inventory Management ---
         getInventory: builder.query({
             query: () => '/inventory/all',
             providesTags: ['Inventory'],
@@ -73,6 +85,13 @@ export const directorApi = createApi({
                 url: `/inventory/update-stock/${itemId}`,
                 method: 'PATCH',
                 params: { quantity }
+            }),
+            invalidatesTags: ['Inventory'],
+        }),
+        removeInventory: builder.mutation({
+            query: (itemId) => ({
+                url: `/inventory/delete/${itemId}`,
+                method: 'DELETE'
             }),
             invalidatesTags: ['Inventory'],
         }),
@@ -92,5 +111,6 @@ export const {
     useDeleteMediaMutation,
     useGetInventoryQuery,
     useAddInventoryMutation,
-    useUpdateStockMutation
+    useUpdateStockMutation,
+    useRemoveInventoryMutation
 } = directorApi;

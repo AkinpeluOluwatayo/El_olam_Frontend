@@ -4,7 +4,7 @@ import { useParentLoginMutation } from '../../../services/AuthApi.js';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../../services/slices/UserSlice.js';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast'; // Import toast
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -19,28 +19,34 @@ const Login = () => {
         e.preventDefault();
         setErrorMessage('');
 
-        // Show a "Loading" toast if you want, or just rely on the button spinner
         const loadingToast = toast.loading('Authenticating...');
 
         try {
             const userData = await loginParent({ email, password }).unwrap();
 
+            // Log the data to verify what the backend is sending
+            console.log("Login Success Data:", userData);
+
             dispatch(setCredentials(userData));
 
-            // Success Toast
             toast.success(`Welcome back, ${userData.email || 'Parent'}!`, {
-                id: loadingToast, // Replaces the loading toast
+                id: loadingToast,
             });
 
-            navigate('/parent/dashboard');
+            // CHECK: Match the backend role "ROLE_PARENT"
+            // and navigate to the App.js path "/parent/dashboard"
+            if (userData.role === 'ROLE_PARENT' || userData.role === 'PARENT') {
+                navigate('/parent/dashboard');
+            } else {
+                // If the user has a different role, you might want to handle it or show an error
+                console.warn("Unexpected role received:", userData.role);
+                toast.error("Unauthorized role access.");
+            }
+
         } catch (err) {
-            const errorMsg = err.data?.message || 'Login failed. Please check your credentials.';
+            const errorMsg = err.data?.message || 'An error occurred during login';
             setErrorMessage(errorMsg);
-
-            // Error Toast
-            toast.error(errorMsg, {
-                id: loadingToast, // Replaces the loading toast
-            });
+            toast.error(errorMsg, { id: loadingToast });
         }
     };
 
@@ -65,7 +71,6 @@ const Login = () => {
                 <h1 className="text-4xl font-semibold text-slate-800 mb-10 tracking-tight">PARENT LOGIN</h1>
 
                 <p className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-5">Enter email and password</p>
-
 
                 <form className="space-y-4" onSubmit={handleSubmit}>
                     <div className="relative">
@@ -103,8 +108,9 @@ const Login = () => {
                     </button>
 
                     <div className="mt-6">
-                        <a href="#" className="text-sky-500 hover:text-sky-700 font-medium transition-colors">
-                            Forgot Password? Contact Us
+                        <span className="text-slate-400 text-sm">Forgot Password? </span>
+                        <a href="mailto:support@elolam.com" className="text-sky-500 hover:text-sky-700 font-medium transition-colors">
+                            Contact Us
                         </a>
                     </div>
                 </form>
