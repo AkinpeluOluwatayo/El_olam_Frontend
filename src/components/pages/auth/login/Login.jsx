@@ -23,22 +23,16 @@ const Login = () => {
 
         try {
             const userData = await loginParent({ email, password }).unwrap();
-
-            // Log the data to verify what the backend is sending
             console.log("Login Success Data:", userData);
-
             dispatch(setCredentials(userData));
 
             toast.success(`Welcome back, ${userData.email || 'Parent'}!`, {
                 id: loadingToast,
             });
 
-            // CHECK: Match the backend role "ROLE_PARENT"
-            // and navigate to the App.js path "/parent/dashboard"
             if (userData.role === 'ROLE_PARENT' || userData.role === 'PARENT') {
                 navigate('/parent/dashboard');
             } else {
-                // If the user has a different role, you might want to handle it or show an error
                 console.warn("Unexpected role received:", userData.role);
                 toast.error("Unauthorized role access.");
             }

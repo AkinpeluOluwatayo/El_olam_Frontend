@@ -6,7 +6,6 @@ export const authApi = createApi({
         baseUrl: 'http://localhost:8080/el_olam/auth',
     }),
     endpoints: (builder) => ({
-        // Shared Admin Login (Tries CEO then Director)
         ceoLogin: builder.mutation({
             query: (credentials) => ({ url: '/login/ceo', method: 'POST', body: credentials }),
         }),
@@ -14,7 +13,6 @@ export const authApi = createApi({
             query: (credentials) => ({ url: '/login/director', method: 'POST', body: credentials }),
         }),
 
-        // Dedicated Parent Login
         parentLogin: builder.mutation({
             query: (credentials) => ({ url: '/login', method: 'POST', body: credentials }),
         }),

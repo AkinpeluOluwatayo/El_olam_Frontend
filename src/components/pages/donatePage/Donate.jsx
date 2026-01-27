@@ -1,13 +1,10 @@
-import React from 'react';
-import { Heart, Globe, Landmark, Copy, CheckCircle2, ArrowRight } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Heart, Globe, Landmark, Copy, ArrowRight, ArrowLeft } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 
-/**
- * AccountCard Component
- * Defined above the main component to ensure it's available in the scope.
- */
+
 const AccountCard = ({ acc, onCopy, color }) => {
-    // Dynamic classes based on the bank type (Local vs Foreign)
     const activeColorClass = color === 'emerald'
         ? 'group-hover:bg-emerald-600 group-hover:text-white'
         : 'group-hover:bg-indigo-600 group-hover:text-white';
@@ -32,6 +29,13 @@ const AccountCard = ({ acc, onCopy, color }) => {
 };
 
 const Donate = () => {
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const localAccounts = [
         { bank: "Zenith Bank", accountName: "El-Olam Center Ltd", accountNo: "1012345678" },
         { bank: "GTBank", accountName: "El-Olam Foundation", accountNo: "0123456789" },
@@ -46,7 +50,6 @@ const Donate = () => {
 
     const copyToClipboard = (num) => {
         if (!navigator.clipboard) {
-            // Fallback for older browsers or non-https environments
             toast.error("Clipboard not supported");
             return;
         }
@@ -64,9 +67,24 @@ const Donate = () => {
 
     return (
         <div className="min-h-screen bg-[#FDFEFF] font-sans text-slate-900 pb-20">
+
+            {/* --- Navigation Back Button --- */}
+            <div className="fixed top-6 left-6 z-[100]"> {/* Adjusted top value for better visibility */}
+                <button
+                    onClick={() => navigate(-1)} // Now works because navigate is defined
+                    className="group flex items-center gap-2 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-xl border border-slate-100 hover:bg-sky-600 transition-all duration-300 active:scale-90"
+                    title="Go Back"
+                >
+                    <ArrowLeft size={24} className="text-slate-600 group-hover:text-white transition-colors" />
+                    <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:pl-2 transition-all duration-500 font-bold group-hover:text-white whitespace-nowrap">
+                        Go Back
+                    </span>
+                </button>
+            </div>
+
             <Toaster position="bottom-center" reverseOrder={false} />
 
-            {/* Hero Section */}
+
             <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-slate-900/60 z-10" />
                 <img
@@ -88,7 +106,7 @@ const Donate = () => {
             <div className="max-w-6xl mx-auto px-4 -mt-16 relative z-30">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-                    {/* Local Donations Column */}
+
                     <div className="bg-white p-8 lg:p-12 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-slate-100">
                         <div className="flex items-center gap-4 mb-8">
                             <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center">
@@ -128,7 +146,7 @@ const Donate = () => {
 
                 </div>
 
-                {/* Impact Statement & CTA */}
+
                 <div className="mt-16 bg-slate-900 rounded-[3rem] p-10 lg:p-16 text-center text-white relative overflow-hidden">
                     <Heart className="absolute -top-10 -right-10 text-white/5" size={300} />
                     <h3 className="text-3xl font-black mb-6">Transparent & Accountable</h3>

@@ -32,7 +32,7 @@ export const ceoApi = createApi({
             query: (childId) => `/users/parent-of/${childId}`,
             providesTags: ['Users'],
         }),
-        // NEW: Global User Deletion
+
         removeUser: builder.mutation({
             query: (userId) => ({
                 url: `/users/remove/${userId}`,

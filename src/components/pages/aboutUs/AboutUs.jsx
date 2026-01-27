@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'; // Import this
-import { Award, Target, Eye, Quote, ArrowLeft } from 'lucide-react'; // Added ArrowLeft
+import { Award, Target, Eye, Quote, ArrowLeft } from 'lucide-react';
 
 const AboutUs = () => {
-    const navigate = useNavigate(); // Initialize navigation
+    const navigate = useNavigate();
 
     const leadership = [
         {
@@ -43,10 +43,10 @@ const AboutUs = () => {
     return (
         <div className="min-h-screen bg-white font-sans overflow-x-hidden pt-20">
 
-            {/* --- Navigation Back Button --- */}
+
             <div className="fixed top-24 left-6 z-[60]">
                 <button
-                    onClick={() => navigate(-1)} // Takes user back one step in history
+                    onClick={() => navigate(-1)}
                     className="group flex items-center gap-2 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-xl border border-slate-100 hover:bg-sky-500 transition-all duration-300 active:scale-90"
                     title="Go Back"
                 >
@@ -57,7 +57,7 @@ const AboutUs = () => {
                 </button>
             </div>
 
-            {/* --- Cinematic Hero --- */}
+
             <section className="relative h-[60vh] flex items-center justify-center bg-slate-900 text-white overflow-hidden">
                 <div className="absolute inset-0 opacity-40">
                     <img

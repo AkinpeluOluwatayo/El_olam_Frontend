@@ -10,10 +10,11 @@ export const directorApi = createApi({
             return headers;
         },
     }),
-    // Sync with CEO: 'Children' and 'Users' (Plural)
+
     tagTypes: ['Children', 'Users', 'Report', 'Media', 'Inventory', 'LatestReport'],
     endpoints: (builder) => ({
-        // --- Child Management ---
+
+
         enrollChild: builder.mutation({
             query: (data) => ({ url: '/children/enroll', method: 'POST', body: data }),
             invalidatesTags: ['Children'],
@@ -35,17 +36,17 @@ export const directorApi = createApi({
             invalidatesTags: ['Children'],
         }),
 
-        // --- Parent Onboarding ---
+
         onboardParent: builder.mutation({
             query: ({ childId, ...data }) => ({
                 url: `/auth/onboard-parent/${childId}`,
                 method: 'POST',
                 body: data
             }),
-            invalidatesTags: ['Users', 'Children'], // Updates both staff list and child record
+            invalidatesTags: ['Users', 'Children'],
         }),
 
-        // --- Reports & Media ---
+
         addReport: builder.mutation({
             query: (data) => ({ url: '/reports/create', method: 'POST', body: data }),
             invalidatesTags: ['Report', 'LatestReport'],
@@ -71,7 +72,7 @@ export const directorApi = createApi({
             invalidatesTags: ['Media'],
         }),
 
-        // --- Inventory Management ---
+
         getInventory: builder.query({
             query: () => '/inventory/all',
             providesTags: ['Inventory'],

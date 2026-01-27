@@ -19,14 +19,14 @@ import toast, { Toaster } from 'react-hot-toast';
 import {
     LayoutDashboard, Boxes, LogOut, User, X,
     Loader2, CheckCircle, Edit, Trash2, Plus,
-    Upload, Users, ClipboardList, AlertTriangle, Menu, Package
+    Upload, Users, ClipboardList, AlertTriangle, Menu, Package, ArrowLeft
 } from 'lucide-react';
 
 const DirectorDashboard = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // --- UI State ---
+
     const [activeTab, setActiveTab] = useState('dashboard');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [selectedId, setSelectedId] = useState(null);
@@ -40,10 +40,10 @@ const DirectorDashboard = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
 
-    // --- Form States ---
-    const [childForm, setChildForm] = useState({ name: '', age: '', dateOfBirth: '', condition: 'Healthy', medicalHistory: 'None' });
+
+    const [childForm, setChildForm] = useState({ name: '', age: '', dateOfBirth: '', condition: '', medicalHistory: '' });
     const [parentForm, setParentForm] = useState({ name: '', phone: '', email: '' });
-    const [reportForm, setReportForm] = useState({ title: '', content: '', category: 'General' });
+    const [reportForm, setReportForm] = useState({ title: '', content: '', category: '' });
     const [inventoryForm, setInventoryForm] = useState({ itemName: '', category: '', quantity: '' });
 
     // --- API Data ---
@@ -69,7 +69,6 @@ const DirectorDashboard = () => {
     ];
 
     // --- Logic Handlers ---
-
     const confirmDelete = async () => {
         try {
             if (deleteType === 'child') {
@@ -80,7 +79,6 @@ const DirectorDashboard = () => {
             toast.success("Deleted successfully");
             setShowDeleteModal(false);
         } catch (err) {
-            // Fix for the "Failed" toast when server returns non-JSON success
             if (err.status === 200 || err.status === 'PARSING_ERROR') {
                 toast.success("Deleted successfully");
                 setShowDeleteModal(false);
@@ -182,12 +180,25 @@ const DirectorDashboard = () => {
             </aside>
 
             <main className="flex-1 overflow-x-hidden min-w-0 w-full">
-                <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 lg:px-8 py-5 sticky top-0 z-40 flex items-center gap-4">
-                    <button onClick={() => setIsMobileMenuOpen(true)} className="lg:hidden p-2 text-slate-600 bg-slate-100 rounded-lg"><Menu size={20} /></button>
-                    <h2 className="text-lg lg:text-xl font-black text-slate-800 tracking-tight uppercase">{activeTab}</h2>
+
+                <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 lg:px-8 py-5 sticky top-0 z-40 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                        <button onClick={() => setIsMobileMenuOpen(true)} className="lg:hidden p-2 text-slate-600 bg-slate-100 rounded-lg"><Menu size={20} /></button>
+                        <h2 className="text-lg lg:text-xl font-black text-slate-800 tracking-tight uppercase">{activeTab}</h2>
+                    </div>
+
+                    {/* --- Integrated Go Back Button --- */}
+                    <button
+                        onClick={() => navigate(-1)}
+                        className="flex items-center gap-2 bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-600 px-4 py-2 rounded-xl transition-all duration-300 group font-bold text-xs uppercase tracking-wider"
+                    >
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                        <span>Go Back</span>
+                    </button>
                 </header>
 
                 <div className="p-4 lg:p-8 max-w-7xl mx-auto space-y-6 lg:space-y-10">
+
                     {activeTab === 'dashboard' && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                             {stats.map((s, i) => (
@@ -293,9 +304,8 @@ const DirectorDashboard = () => {
                     )}
                 </div>
 
-                {/* --- Modals --- */}
 
-                {/* Stock Modal */}
+
                 {showStockModal && (
                     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[300] flex items-center justify-center p-4">
                         <div className="bg-white rounded-[2.5rem] w-full max-w-sm p-10 shadow-2xl relative">
@@ -309,7 +319,7 @@ const DirectorDashboard = () => {
                     </div>
                 )}
 
-                {/* Delete Modal */}
+
                 {showDeleteModal && (
                     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[300] flex items-center justify-center p-4">
                         <div className="bg-white rounded-[2.5rem] w-full max-w-sm p-10 shadow-2xl text-center">
@@ -324,7 +334,7 @@ const DirectorDashboard = () => {
                     </div>
                 )}
 
-                {/* Parent Modal */}
+
                 {showParentModal && (
                     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4">
                         <div className="bg-white rounded-[2.5rem] w-full max-w-md p-10 shadow-2xl relative">
@@ -355,7 +365,7 @@ const DirectorDashboard = () => {
                     </div>
                 )}
 
-                {/* Report Modal */}
+
                 {showReportModal && (
                     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4">
                         <div className="bg-white rounded-[2rem] w-full max-w-lg p-10 shadow-2xl relative">

@@ -31,7 +31,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin-login" element={<AdminLogin />} />
 
-                {/* --- PROTECTED CEO ROUTE --- */}
+                {/* --- PROTECTED  ROUTES --- */}
                 <Route
                     path="/ceo/dashboard"
                     element={
@@ -41,7 +41,6 @@ function App() {
                     }
                 />
 
-                {/* --- PROTECTED DIRECTOR ROUTE --- */}
                 <Route
                     path="/director/dashboard"
                     element={
@@ -51,7 +50,6 @@ function App() {
                     }
                 />
 
-                {/* --- PROTECTED PARENT ROUTE --- */}
                 <Route
                     path="/parent/dashboard"
                     element={
@@ -61,7 +59,6 @@ function App() {
                     }
                 />
 
-                {/* Fallback to Landing */}
                 <Route path="*" element={<Landing />} />
             </Routes>
         </Router>

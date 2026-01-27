@@ -44,7 +44,7 @@ const ParentDashboard = () => {
         return { latestPhoto: newestPhoto, galleryPhotos: allOtherImages };
     }, [media]);
 
-    // UPDATED: Correct redirect after logout
+
     const handleSignOut = () => {
         dispatch(logout());
         navigate('/login');
@@ -58,7 +58,7 @@ const ParentDashboard = () => {
 
     return (
         <div className="flex min-h-screen bg-[#F8FAFC] font-sans text-slate-900 relative">
-            {/* Image Modal */}
+
             {selectedImage && (
                 <div className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 cursor-zoom-out" onClick={() => setSelectedImage(null)}>
                     <img src={selectedImage} className="max-w-full max-h-full rounded-lg object-contain shadow-2xl" alt="Full view" />

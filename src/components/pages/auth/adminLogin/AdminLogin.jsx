@@ -4,7 +4,7 @@ import { useCeoLoginMutation, useDirectorLoginMutation } from '../../../services
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../../services/slices/UserSlice.js';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast'; // Import toast
+import toast from 'react-hot-toast';
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('');
@@ -26,19 +26,18 @@ const AdminLogin = () => {
         try {
             let userData;
 
-            // Attempt CEO login first
+
             try {
                 userData = await ceoLogin({ email, password }).unwrap();
             } catch (ceoErr) {
-                // If CEO fails, immediately attempt Director login
+
                 userData = await directorLogin({ email, password }).unwrap();
             }
 
-            // Success Handling
             dispatch(setCredentials(userData));
             toast.success(`Welcome, ${userData.role} Access Granted`, { id: loadingToast });
 
-            // Route based on role
+
             if (userData.role === 'CEO') {
                 navigate('/ceo/dashboard');
             } else if (userData.role === 'DIRECTOR') {

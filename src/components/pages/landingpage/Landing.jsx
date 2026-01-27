@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
 
-// Import Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
@@ -20,7 +20,7 @@ const LandingPage = () => {
     const [mobilePortalOpen, setMobilePortalOpen] = useState(false); // Mobile Portal Toggle
     const dropdownRef = useRef(null);
 
-    // Close desktop dropdown when clicking outside
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -75,12 +75,12 @@ const LandingPage = () => {
                             </span>
                         </div>
 
-                        {/* Desktop Links */}
+
                         <div className="hidden md:flex items-center space-x-8">
                             <Link to="/AboutUs" className="text-slate-600 hover:text-sky-600 font-bold text-sm transition-colors">About Us</Link>
                             <Link to="/ElolamServices" className="text-slate-600 hover:text-sky-600 font-bold text-sm transition-colors">Services</Link>
 
-                            {/* --- DONATE LINK (NAV BAR) --- */}
+
                             <Link to="/Donate" className="flex items-center gap-2 px-5 py-2 bg-rose-50 text-rose-600 rounded-full font-black text-xs uppercase tracking-wider hover:bg-rose-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-rose-100 group">
                                 <Heart size={14} className="fill-current group-hover:scale-110 transition-transform" />
                                 Donate
@@ -103,7 +103,7 @@ const LandingPage = () => {
                             </div>
                         </div>
 
-                        {/* Mobile Menu Icon */}
+
                         <div className="md:hidden">
                             <button onClick={() => setIsOpen(!isOpen)} className="text-sky-600 p-2">
                                 {isOpen ? <X size={28}/> : <Menu size={28}/>}
@@ -112,18 +112,18 @@ const LandingPage = () => {
                     </div>
                 </div>
 
-                {/* --- Mobile View Dropdown --- */}
+
                 {isOpen && (
                     <div className="md:hidden bg-white border-t border-sky-50 shadow-2xl absolute w-full left-0 p-6 flex flex-col space-y-4 animate-in slide-in-from-top duration-300">
                         <Link to="/AboutUs" className="text-lg font-bold text-slate-700 border-b border-slate-50 pb-2" onClick={() => setIsOpen(false)}>About Us</Link>
                         <Link to="/ElolamServices" className="text-lg font-bold text-slate-700 border-b border-slate-50 pb-2" onClick={() => setIsOpen(false)}>Services</Link>
 
-                        {/* --- MOBILE DONATE LINK --- */}
+
                         <Link to="/donate" className="flex justify-between items-center text-lg font-black text-rose-500 py-2 border-b border-slate-50" onClick={() => setIsOpen(false)}>
                             Donate <Heart size={20} className="fill-rose-500" />
                         </Link>
 
-                        {/* Mobile Portals Accordion */}
+
                         <div className="flex flex-col">
                             <button
                                 onClick={() => setMobilePortalOpen(!mobilePortalOpen)}
@@ -147,7 +147,7 @@ const LandingPage = () => {
                 )}
             </nav>
 
-            {/* --- Hero Section --- */}
+
             <section id="home" className="h-[80vh] relative flex items-center bg-cover bg-center" style={{ backgroundImage: `url('/images/Gemini_Generated_Image_n21a2on21a2on21a.png')` }}>
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/30 to-transparent"></div>
                 <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -178,7 +178,6 @@ const LandingPage = () => {
                 </div>
             </section>
 
-            {/* --- Stats --- */}
             <section className="relative -mt-10 z-20 container mx-auto px-4 lg:px-20 max-w-6xl">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {stats.map((stat, i) => (

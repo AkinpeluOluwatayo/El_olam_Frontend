@@ -48,7 +48,7 @@ const ElolamServices = () => {
         }
     ];
 
-    // Array of your random images from public/images
+
     const galleryImages = [
         "/images/Service1.jpeg",
         "/images/Service2.jpeg",
@@ -61,7 +61,7 @@ const ElolamServices = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 font-sans pt-20">
-            {/* --- Back Button --- */}
+
             <div className="fixed top-24 left-6 z-50">
                 <button
                     onClick={() => navigate(-1)}
@@ -71,7 +71,7 @@ const ElolamServices = () => {
                 </button>
             </div>
 
-            {/* --- Header Section --- */}
+
             <section className="py-20 px-6 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -113,7 +113,7 @@ const ElolamServices = () => {
                 </div>
             </section>
 
-            {/* --- Blended Image Gallery --- */}
+
             <section className="bg-slate-900 py-24 px-6">
                 <div className="container mx-auto">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
@@ -147,7 +147,7 @@ const ElolamServices = () => {
                 </div>
             </section>
 
-            {/* --- Call to Action --- */}
+
             <section className="py-24 px-6 text-center">
                 <div className="bg-sky-500 rounded-[3rem] p-12 md:p-20 text-white shadow-2xl shadow-sky-500/30 max-w-5xl mx-auto overflow-hidden relative">
                     <div className="relative z-10">
@@ -159,7 +159,7 @@ const ElolamServices = () => {
                             Contact Our Team
                         </button>
                     </div>
-                    {/* Decorative Circle */}
+
                     <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
                 </div>
             </section>

@@ -18,20 +18,16 @@ const CEODashboard = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // --- State ---
     const [activeTab, setActiveTab] = useState('analytics');
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [userToDelete, setUserToDelete] = useState(null);
 
-    // --- API Data ---
     const { data: allUsers = [], isLoading: loadingUsers } = useGetGlobalUsersQuery();
     const { data: allChildren = [], isLoading: loadingChildren } = useGetGlobalChildrenQuery();
     const [removeUser, { isLoading: isDeleting }] = useRemoveUserMutation();
 
-    // --- Dynamic Search Logic ---
-    // This filters the lists locally based on the search term for instant feedback
     const filteredUsers = allUsers.filter(user =>
         user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.email?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -67,7 +63,6 @@ const CEODashboard = () => {
         <div className="flex min-h-screen bg-[#F8FAFC] font-sans text-slate-900 relative">
             <Toaster position="top-right" />
 
-            {/* Custom Delete Confirmation Modal */}
             {showDeleteModal && (
                 <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[1000] flex items-center justify-center p-4">
                     <div className="bg-white rounded-[2.5rem] w-full max-w-md p-8 shadow-2xl animate-in zoom-in duration-200">
@@ -128,7 +123,6 @@ const CEODashboard = () => {
                     <div className="flex items-center gap-4 flex-1">
                         <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden p-2 text-slate-600 bg-slate-100 rounded-lg"><Menu size={20} /></button>
 
-                        {/* THE SEARCH BAR: Now filters based on active view */}
                         <div className="relative hidden md:block w-96">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                             <input
@@ -203,7 +197,7 @@ const CEODashboard = () => {
                         </div>
                     )}
 
-                    {/* Child Registry Registry */}
+                    {/* Child  Registry */}
                     {activeTab === 'children' && (
                         <div className="bg-white rounded-[2rem] border border-slate-200 shadow-sm p-6 lg:p-8">
                             <h3 className="text-xl font-black mb-6">Live Enrollment List</h3>
