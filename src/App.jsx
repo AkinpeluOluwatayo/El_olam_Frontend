@@ -11,6 +11,7 @@ import ParentDashboard from "./components/pages/parentDashboard/ParentDashboard.
 import CEODashboard from "./components/pages/ceoDashboard/CEODashboard.jsx";
 import AboutUs from "./components/pages/aboutUs/AboutUs.jsx";
 import ElolamServices from "./components/pages/elolamServices/ElolamServices.jsx";
+import Donate from "./components/pages/donatePage/Donate.jsx";
 
 function App() {
     const { userInfo, isAuthenticated } = useSelector((state) => state.user);
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/" element={<Landing />} />
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/elolamServices" element={<ElolamServices />} />
+                <Route path="/donate" element={<Donate />} />
 
                 {/* --- AUTH ROUTES --- */}
                 <Route path="/login" element={<Login />} />

@@ -80,6 +80,12 @@ const LandingPage = () => {
                             <Link to="/AboutUs" className="text-slate-600 hover:text-sky-600 font-bold text-sm transition-colors">About Us</Link>
                             <Link to="/ElolamServices" className="text-slate-600 hover:text-sky-600 font-bold text-sm transition-colors">Services</Link>
 
+                            {/* --- DONATE LINK (NAV BAR) --- */}
+                            <Link to="/Donate" className="flex items-center gap-2 px-5 py-2 bg-rose-50 text-rose-600 rounded-full font-black text-xs uppercase tracking-wider hover:bg-rose-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-rose-100 group">
+                                <Heart size={14} className="fill-current group-hover:scale-110 transition-transform" />
+                                Donate
+                            </Link>
+
                             <div className="relative" ref={dropdownRef}>
                                 <button onClick={() => setDropdownOpen(!dropdownOpen)} className="flex items-center gap-2 bg-sky-600 text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg shadow-sky-100 active:scale-95 hover:bg-sky-700 transition-all">
                                     Portals <ChevronDown size={16} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
@@ -112,6 +118,11 @@ const LandingPage = () => {
                         <Link to="/AboutUs" className="text-lg font-bold text-slate-700 border-b border-slate-50 pb-2" onClick={() => setIsOpen(false)}>About Us</Link>
                         <Link to="/ElolamServices" className="text-lg font-bold text-slate-700 border-b border-slate-50 pb-2" onClick={() => setIsOpen(false)}>Services</Link>
 
+                        {/* --- MOBILE DONATE LINK --- */}
+                        <Link to="/donate" className="flex justify-between items-center text-lg font-black text-rose-500 py-2 border-b border-slate-50" onClick={() => setIsOpen(false)}>
+                            Donate <Heart size={20} className="fill-rose-500" />
+                        </Link>
+
                         {/* Mobile Portals Accordion */}
                         <div className="flex flex-col">
                             <button
@@ -136,15 +147,15 @@ const LandingPage = () => {
                 )}
             </nav>
 
-            {/* --- Hero Section (FIXED TRANSITIONS) --- */}
+            {/* --- Hero Section --- */}
             <section id="home" className="h-[80vh] relative flex items-center bg-cover bg-center" style={{ backgroundImage: `url('/images/Gemini_Generated_Image_n21a2on21a2on21a.png')` }}>
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/30 to-transparent"></div>
                 <div className="container mx-auto px-6 lg:px-12 relative z-10">
                     <Swiper
                         modules={[Autoplay, Pagination, EffectFade]}
                         effect="fade"
-                        fadeEffect={{ crossFade: true }} // Prevents text clashing during transition
-                        speed={1000} // Smoother transition duration
+                        fadeEffect={{ crossFade: true }}
+                        speed={1000}
                         autoplay={{ delay: 5000, disableOnInteraction: false }}
                         className="w-full"
                     >
@@ -158,7 +169,7 @@ const LandingPage = () => {
                                         {slide.desc}
                                     </p>
                                     <button className="bg-sky-500 text-white px-8 py-3.5 rounded-full font-black flex items-center gap-2 uppercase text-[11px] tracking-widest shadow-xl shadow-sky-500/30 active:scale-95 transition-transform">
-                                       Ability In Disability
+                                        Ability In Disability
                                     </button>
                                 </div>
                             </SwiperSlide>
@@ -236,8 +247,9 @@ const LandingPage = () => {
                             <p className="text-sm font-medium max-w-xs mx-auto md:mx-0">Nurturing environments where special needs children flourish.</p>
                         </div>
                         <div className="flex flex-col md:items-end">
-                            <h4 className="text-white font-black uppercase text-[10px] tracking-widest mb-6 text-sky-500">Contact</h4>
+                            <h4 className="text-white font-black uppercase text-[10px] tracking-widest mb-6 text-sky-500">Links & Contact</h4>
                             <div className="space-y-4 text-sm font-medium">
+                                <Link to="/donate" className="block text-rose-400 font-bold hover:text-rose-300 transition-colors">Support Our Mission</Link>
                                 <p className="flex items-center gap-3 md:flex-row-reverse"><MapPin size={18} className="text-sky-500"/> Lagos & Ogun State</p>
                                 <p className="flex items-center gap-3 md:flex-row-reverse"><Phone size={18} className="text-sky-500"/> +234 813 797 3130</p>
                             </div>
