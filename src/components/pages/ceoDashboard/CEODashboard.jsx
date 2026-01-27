@@ -5,7 +5,7 @@ import { logout } from '../../services/slices/UserSlice.js';
 import toast, { Toaster } from 'react-hot-toast';
 import {
     BarChart3, Users, Search, LogOut, ChevronRight,
-    TrendingUp, Menu, UserCheck, UserX, Loader2, Baby, Mail, Phone, AlertCircle
+    TrendingUp, Menu, UserCheck, UserX, Loader2, Baby, Mail, Phone, AlertCircle, ArrowLeft
 } from 'lucide-react';
 
 import {
@@ -56,13 +56,14 @@ const CEODashboard = () => {
     const handleLogout = () => {
         dispatch(logout());
         localStorage.removeItem('token');
-        navigate('/admin-login');
+        navigate('/');
     };
 
     return (
         <div className="flex min-h-screen bg-[#F8FAFC] font-sans text-slate-900 relative">
             <Toaster position="top-right" />
 
+            {/* Delete Modal */}
             {showDeleteModal && (
                 <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[1000] flex items-center justify-center p-4">
                     <div className="bg-white rounded-[2.5rem] w-full max-w-md p-8 shadow-2xl animate-in zoom-in duration-200">
@@ -75,17 +76,8 @@ const CEODashboard = () => {
                             This action is permanent and will revoke all access.
                         </p>
                         <div className="flex gap-4">
-                            <button
-                                onClick={() => setShowDeleteModal(false)}
-                                className="flex-1 py-4 bg-slate-100 text-slate-600 font-bold rounded-2xl hover:bg-slate-200 transition-colors"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={confirmDelete}
-                                disabled={isDeleting}
-                                className="flex-1 py-4 bg-red-500 text-white font-black rounded-2xl hover:bg-red-600 transition-all flex items-center justify-center gap-2"
-                            >
+                            <button onClick={() => setShowDeleteModal(false)} className="flex-1 py-4 bg-slate-100 text-slate-600 font-bold rounded-2xl hover:bg-slate-200 transition-colors">Cancel</button>
+                            <button onClick={confirmDelete} disabled={isDeleting} className="flex-1 py-4 bg-red-500 text-white font-black rounded-2xl hover:bg-red-600 transition-all flex items-center justify-center gap-2">
                                 {isDeleting ? <Loader2 className="animate-spin" size={20}/> : "Delete User"}
                             </button>
                         </div>
@@ -93,53 +85,78 @@ const CEODashboard = () => {
                 </div>
             )}
 
-            {isSidebarOpen && (
-                <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] lg:hidden" onClick={() => setIsSidebarOpen(false)} />
-            )}
+            {isSidebarOpen && <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] lg:hidden" onClick={() => setIsSidebarOpen(false)} />}
 
             {/* --- Sidebar --- */}
-            <aside className={`fixed lg:sticky top-0 left-0 z-[101] h-screen w-72 bg-slate-900 transition-transform duration-300 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+            <aside className={`fixed lg:sticky top-0 left-0 z-[101] h-screen w-72 bg-slate-900 flex flex-col transition-transform duration-300 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
                 <div className="p-8 flex items-center gap-3">
                     <div className="w-10 h-10 bg-sky-500 rounded-xl flex items-center justify-center text-white font-black shadow-lg">CEO</div>
                     <span className="font-bold text-white text-xl tracking-tight uppercase">El-Olam</span>
                 </div>
 
-                <nav className="flex-1 px-4 space-y-2 mt-4">
+                <nav className="flex-1 px-4 space-y-2 mt-4 overflow-y-auto">
                     <CEONavLink icon={<BarChart3 size={20}/>} label="Overview" active={activeTab === 'analytics'} onClick={() => {setActiveTab('analytics'); setIsSidebarOpen(false); setSearchTerm("");}} />
                     <CEONavLink icon={<Users size={20}/>} label="Manage Staff & Parents" active={activeTab === 'staff'} onClick={() => {setActiveTab('staff'); setIsSidebarOpen(false); setSearchTerm("");}} />
                     <CEONavLink icon={<Baby size={20}/>} label="Child Registry" active={activeTab === 'children'} onClick={() => {setActiveTab('children'); setIsSidebarOpen(false); setSearchTerm("");}} />
                 </nav>
 
-                <div className="p-8 border-t border-slate-800">
-                    <button onClick={handleLogout} className="w-full flex items-center gap-3 text-slate-400 hover:text-red-400 font-bold p-2 transition-colors">
+                <div className="mt-auto p-8 border-t border-slate-800 bg-slate-900">
+                    <button onClick={handleLogout} className="w-full flex items-center gap-3 text-slate-400 hover:text-red-400 font-bold p-3 rounded-2xl hover:bg-red-500/10 transition-all duration-300">
                         <LogOut size={20} /> Logout
                     </button>
                 </div>
             </aside>
 
             {/* --- Main Content --- */}
-            <main className="flex-1 overflow-x-hidden min-w-0">
-                <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 px-8 py-5 flex justify-between items-center sticky top-0 z-40">
-                    <div className="flex items-center gap-4 flex-1">
-                        <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden p-2 text-slate-600 bg-slate-100 rounded-lg"><Menu size={20} /></button>
+            <main className="flex-1 overflow-x-hidden min-w-0 w-full">
+                <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40">
+                    {/* Top Row: Navigation and Profile */}
+                    <div className="px-4 lg:px-8 py-4 flex justify-between items-center">
+                        <div className="flex items-center gap-3">
+                            <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden p-2 text-slate-600 bg-slate-100 rounded-lg"><Menu size={20} /></button>
+                            <button
+                                onClick={() => navigate(-1)}
+                                className="flex items-center gap-2 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-600 px-3 py-2 lg:px-4 rounded-xl transition-all duration-300 group font-bold text-[10px] lg:text-xs uppercase tracking-wider shadow-sm"
+                            >
+                                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+                                <span>Go Back</span>
+                            </button>
+                        </div>
 
-                        <div className="relative hidden md:block w-96">
+                        {/* Desktop Search Bar */}
+                        <div className="relative hidden md:block w-64 lg:w-96 mx-4">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                             <input
                                 type="text"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                placeholder={`Search ${activeTab === 'children' ? 'children...' : 'users...'}`}
+                                placeholder="Search everything..."
                                 className="w-full pl-10 pr-4 py-2 bg-slate-100 rounded-full text-sm outline-none ring-sky-500/20 focus:ring-4 transition-all"
                             />
                         </div>
+
+                        <div className="flex items-center gap-3">
+                            <h1 className="hidden sm:block text-xs font-black text-slate-400 uppercase tracking-widest">{activeTab}</h1>
+                            <div className="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-white text-[10px] font-black uppercase shadow-md">CEO</div>
+                        </div>
                     </div>
-                    <div className="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-white text-[10px] font-black uppercase">CEO</div>
+
+                    {/* Mobile Search Row (Visible only on small screens) */}
+                    <div className="px-4 pb-4 md:hidden">
+                        <div className="relative w-full">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                            <input
+                                type="text"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                placeholder={`Search ${activeTab}...`}
+                                className="w-full pl-10 pr-4 py-2.5 bg-slate-100 rounded-xl text-sm outline-none border border-slate-200 focus:border-sky-500 transition-all"
+                            />
+                        </div>
+                    </div>
                 </header>
 
                 <div className="p-4 lg:p-8 max-w-7xl mx-auto space-y-8">
-
-                    {/* Analytics Overview */}
                     {activeTab === 'analytics' && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             <CEOStatCard label="Total Organization Users" value={loadingUsers ? "..." : allUsers.length} icon={<Users className="text-sky-500" />} color="bg-sky-50" />
@@ -148,7 +165,6 @@ const CEODashboard = () => {
                         </div>
                     )}
 
-                    {/* Manage Staff & Parents List */}
                     {activeTab === 'staff' && (
                         <div className="bg-white rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden">
                             <div className="p-6 border-b border-slate-100 flex justify-between items-center">
@@ -182,10 +198,7 @@ const CEODashboard = () => {
                                                     </span>
                                             </td>
                                             <td className="px-8 py-5 text-right">
-                                                <button
-                                                    onClick={() => handleDeleteClick(user)}
-                                                    className="p-3 text-slate-300 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all"
-                                                >
+                                                <button onClick={() => handleDeleteClick(user)} className="p-3 text-slate-300 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all">
                                                     <UserX size={18}/>
                                                 </button>
                                             </td>
@@ -197,10 +210,12 @@ const CEODashboard = () => {
                         </div>
                     )}
 
-                    {/* Child  Registry */}
                     {activeTab === 'children' && (
                         <div className="bg-white rounded-[2rem] border border-slate-200 shadow-sm p-6 lg:p-8">
-                            <h3 className="text-xl font-black mb-6">Live Enrollment List</h3>
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="text-xl font-black">Live Enrollment List</h3>
+                                {searchTerm && <span className="text-xs font-bold text-sky-500 font-black uppercase tracking-widest">{filteredChildren.length} Found</span>}
+                            </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {filteredChildren.map((child) => (
                                     <div key={child.id} className="p-6 border border-slate-100 rounded-[2.5rem] bg-slate-50/50 hover:bg-white hover:border-sky-300 hover:shadow-xl transition-all group">

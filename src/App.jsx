@@ -15,29 +15,27 @@ import Donate from "./components/pages/donatePage/Donate.jsx";
 
 function App() {
     const { userInfo, isAuthenticated } = useSelector((state) => state.user);
+    const SECRET_ADMIN_PATH = "/el-olam-access-gate";
 
     return (
         <Router>
             <Toaster position="top-center" reverseOrder={false} />
-
             <Routes>
-                {/* --- PUBLIC ROUTES --- */}
                 <Route path="/" element={<Landing />} />
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/elolamServices" element={<ElolamServices />} />
                 <Route path="/donate" element={<Donate />} />
-
-                {/* --- AUTH ROUTES --- */}
                 <Route path="/login" element={<Login />} />
-                <Route path="/admin-login" element={<AdminLogin />} />
 
-                {/* --- PROTECTED  ROUTES --- */}
+                {/* Secret Admin Route */}
+                <Route path={SECRET_ADMIN_PATH} element={<AdminLogin />} />
+
                 <Route
                     path="/ceo/dashboard"
                     element={
                         isAuthenticated && userInfo?.role === 'CEO'
                             ? <CEODashboard />
-                            : <Navigate to="/admin-login" replace />
+                            : <Navigate to={SECRET_ADMIN_PATH} replace />
                     }
                 />
 
@@ -46,7 +44,7 @@ function App() {
                     element={
                         isAuthenticated && userInfo?.role === 'DIRECTOR'
                             ? <DirectorDashboard />
-                            : <Navigate to="/admin-login" replace />
+                            : <Navigate to={SECRET_ADMIN_PATH} replace />
                     }
                 />
 
@@ -59,7 +57,7 @@ function App() {
                     }
                 />
 
-                <Route path="*" element={<Landing />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </Router>
     );

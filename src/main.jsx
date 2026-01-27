@@ -8,7 +8,6 @@ import { Store } from './components/services/Store.js';
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-
         <Provider store={Store}>
             <App />
         </Provider>

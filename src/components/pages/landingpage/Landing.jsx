@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
-
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -15,11 +14,36 @@ import {
 } from 'lucide-react';
 
 const LandingPage = () => {
-    const [isOpen, setIsOpen] = useState(false); // Mobile Menu Toggle
-    const [dropdownOpen, setDropdownOpen] = useState(false); // Desktop Dropdown
-    const [mobilePortalOpen, setMobilePortalOpen] = useState(false); // Mobile Portal Toggle
+    const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [mobilePortalOpen, setMobilePortalOpen] = useState(false);
     const dropdownRef = useRef(null);
 
+    // --- STEALTH EASTER EGG LOGIC ---
+    const [clickCount, setClickCount] = useState(0);
+    const [isActivating, setIsActivating] = useState(false);
+    const SECRET_ADMIN_PATH = "/el-olam-access-gate";
+
+    const handleLogoClick = () => {
+        const newCount = clickCount + 1;
+        setClickCount(newCount);
+
+
+        const timer = setTimeout(() => setClickCount(0), 2000);
+
+
+        if (newCount === 5) {
+            clearTimeout(timer);
+            setIsActivating(true);
+
+            setTimeout(() => {
+                navigate(SECRET_ADMIN_PATH);
+                setClickCount(0);
+                setIsActivating(false);
+            }, 600);
+        }
+    };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -68,18 +92,28 @@ const LandingPage = () => {
             <nav className="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-sky-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-20 items-center">
-                        <div className="flex-shrink-0 flex items-center gap-3">
+
+
+                        <div
+                            className={`flex-shrink-0 flex items-center gap-3 cursor-default select-none transition-all duration-500 p-2 rounded-xl ${
+                                isActivating ? 'scale-110' : 'scale-100'
+                            }`}
+                            onClick={handleLogoClick}
+                            style={{
+                                boxShadow: isActivating
+                                    ? `0 0 40px 10px rgba(79, 70, 229, 0.4)`
+                                    : 'none'
+                            }}
+                        >
                             <img src="/images/elolamLogo.png" alt="Logo" className="h-10 w-auto object-contain" />
                             <span className="text-xs sm:text-sm lg:text-base font-black text-slate-800 leading-tight uppercase tracking-tight">
                                 El-Olam Special Home <br className="sm:hidden" /> & Rehabilitation Center
                             </span>
                         </div>
 
-
                         <div className="hidden md:flex items-center space-x-8">
                             <Link to="/AboutUs" className="text-slate-600 hover:text-sky-600 font-bold text-sm transition-colors">About Us</Link>
                             <Link to="/ElolamServices" className="text-slate-600 hover:text-sky-600 font-bold text-sm transition-colors">Services</Link>
-
 
                             <Link to="/Donate" className="flex items-center gap-2 px-5 py-2 bg-rose-50 text-rose-600 rounded-full font-black text-xs uppercase tracking-wider hover:bg-rose-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-rose-100 group">
                                 <Heart size={14} className="fill-current group-hover:scale-110 transition-transform" />
@@ -93,16 +127,12 @@ const LandingPage = () => {
                                 {dropdownOpen && (
                                     <div className="absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-2xl border border-sky-50 overflow-hidden py-1">
                                         <Link to="/login" className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-sky-50 border-b border-slate-50 transition-colors">
-                                            <User size={14} className="text-sky-500" /> <span className="font-bold text-xs">Parent Login</span>
-                                        </Link>
-                                        <Link to="/admin-login" className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-sky-50 transition-colors">
-                                            <Lock size={14} className="text-sky-500" /> <span className="font-bold text-xs">Admin Login</span>
+                                            <User size={14} className="text-sky-500" /> <span className="font-bold text-xs">Parent Portal</span>
                                         </Link>
                                     </div>
                                 )}
                             </div>
                         </div>
-
 
                         <div className="md:hidden">
                             <button onClick={() => setIsOpen(!isOpen)} className="text-sky-600 p-2">
@@ -112,17 +142,14 @@ const LandingPage = () => {
                     </div>
                 </div>
 
-
                 {isOpen && (
                     <div className="md:hidden bg-white border-t border-sky-50 shadow-2xl absolute w-full left-0 p-6 flex flex-col space-y-4 animate-in slide-in-from-top duration-300">
                         <Link to="/AboutUs" className="text-lg font-bold text-slate-700 border-b border-slate-50 pb-2" onClick={() => setIsOpen(false)}>About Us</Link>
                         <Link to="/ElolamServices" className="text-lg font-bold text-slate-700 border-b border-slate-50 pb-2" onClick={() => setIsOpen(false)}>Services</Link>
 
-
                         <Link to="/donate" className="flex justify-between items-center text-lg font-black text-rose-500 py-2 border-b border-slate-50" onClick={() => setIsOpen(false)}>
                             Donate <Heart size={20} className="fill-rose-500" />
                         </Link>
-
 
                         <div className="flex flex-col">
                             <button
@@ -135,10 +162,7 @@ const LandingPage = () => {
                             {mobilePortalOpen && (
                                 <div className="flex flex-col pl-4 space-y-3 mt-2 animate-in fade-in slide-in-from-left-2">
                                     <Link to="/login" className="flex items-center gap-3 text-slate-600 font-bold py-2" onClick={() => setIsOpen(false)}>
-                                        <User size={18} className="text-sky-500"/> Parent Login
-                                    </Link>
-                                    <Link to="/admin-login" className="flex items-center gap-3 text-slate-600 font-bold py-2" onClick={() => setIsOpen(false)}>
-                                        <Lock size={18} className="text-sky-500"/> Admin Login
+                                        <User size={18} className="text-sky-500"/> Parent Portal
                                     </Link>
                                 </div>
                             )}
@@ -178,6 +202,7 @@ const LandingPage = () => {
                 </div>
             </section>
 
+            {/* --- Stats --- */}
             <section className="relative -mt-10 z-20 container mx-auto px-4 lg:px-20 max-w-6xl">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {stats.map((stat, i) => (
