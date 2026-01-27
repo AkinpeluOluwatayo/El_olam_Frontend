@@ -15,8 +15,14 @@ const AboutUs = () => {
         },
         {
             name: "Amb. Dr. Mrs. Grace Edward",
-            role: "Founder",
+            role: "Founder/Ceo",
             image: "/images/founder.jpeg",
+            bio: "A visionary leader dedicated to transforming the lives of neurodiverse children through specialized rehabilitation."
+        },
+        {
+            name: "chM. Dr. Michael Edward",
+            role: "Founder",
+            image: "/images/cofounder.png",
             bio: "A visionary leader dedicated to transforming the lives of neurodiverse children through specialized rehabilitation."
         },
         {
