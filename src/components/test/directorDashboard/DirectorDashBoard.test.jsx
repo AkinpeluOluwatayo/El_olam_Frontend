@@ -9,7 +9,7 @@ import { directorApi } from '../../services/DirectorApi';
 import { server } from '../../mocks/Server.js';
 import '@testing-library/jest-dom';
 
-// MSW Lifecycle Setup
+
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
@@ -46,7 +46,6 @@ describe('DirectorDashboard UI Tests', () => {
         renderWithProviders(<DirectorDashboard />);
         fireEvent.click(screen.getByRole('button', { name: /registry/i }));
 
-        // findBy waits for the MSW mock response
         const childName = await screen.findByText(/John Doe/i);
         expect(childName).toBeInTheDocument();
         expect(screen.getByText(/Autism/i)).toBeInTheDocument();
