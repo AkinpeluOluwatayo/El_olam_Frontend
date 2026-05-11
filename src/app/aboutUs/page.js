@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Award, Target, Eye, Quote, ArrowLeft } from 'lucide-react';
 
 const AboutUs = () => {
@@ -67,10 +68,12 @@ const AboutUs = () => {
 
             <section className="relative h-[60vh] flex items-center justify-center bg-slate-900 text-white overflow-hidden">
                 <div className="absolute inset-0 opacity-40">
-                    <img
+                    <Image
                         src="/images/Gemini_Generated_Image_n21a2on21a2on21a.png"
                         alt="Facility Background"
-                        className="w-full h-full object-cover"
+                        fill
+                        priority
+                        className="object-cover"
                     />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900"></div>
@@ -156,14 +159,14 @@ const AboutUs = () => {
                                 className="relative group text-center"
                             >
                                 <div className="relative mb-6 mx-auto w-56 h-72 rounded-[2rem] overflow-hidden shadow-2xl bg-slate-100">
-                                    <img
+                                    <Image
                                         src={member.image}
                                         alt={member.name}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                        onError={(e) => { e.target.src = 'https://via.placeholder.com/300x400?text=Leadership'; }}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
-                                    <div className="absolute bottom-4 left-0 right-0 px-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60 z-10"></div>
+                                    <div className="absolute bottom-4 left-0 right-0 px-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                                         <p className="text-xs font-medium italic">"{member.bio}"</p>
                                     </div>
                                 </div>

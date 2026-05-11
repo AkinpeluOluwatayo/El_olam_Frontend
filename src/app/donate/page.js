@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Heart, Globe, Landmark, Copy, ArrowRight, ArrowLeft } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -88,12 +89,14 @@ const Donate = () => {
 
 
             <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-slate-900/60 z-10" />
-                <img
+                <Image
                     src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=2000"
                     alt="Children Support"
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    priority
+                    className="object-cover"
                 />
+                <div className="absolute inset-0 bg-slate-900/60 z-10" />
                 <div className="relative z-20 text-center px-4">
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white text-xs font-black uppercase tracking-widest mb-6">
                         <Heart size={14} className="text-rose-400 fill-rose-400" /> Make an Impact

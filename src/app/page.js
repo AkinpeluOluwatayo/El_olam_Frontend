@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
@@ -66,7 +67,7 @@ const LandingPage = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-20 items-center">
                         <div className="flex-shrink-0 flex items-center gap-3 cursor-default select-none transition-all duration-500 p-2 rounded-xl">
-                            <img src="/images/elolamLogo.png" alt="Logo" className="h-10 w-auto object-contain" />
+                            <Image src="/images/elolamLogo.png" alt="Logo" width={40} height={40} className="object-contain" />
                             <span className="text-xs sm:text-sm lg:text-base font-black text-slate-800 leading-tight uppercase tracking-tight">
                                 El-Olam Special Home <br className="sm:hidden" /> & Rehabilitation Center
                             </span>
@@ -103,9 +104,16 @@ const LandingPage = () => {
             </nav>
 
 
-            <section id="home" className="h-[80vh] relative flex items-center bg-cover bg-center" style={{ backgroundImage: `url('/images/Gemini_Generated_Image_n21a2on21a2on21a.png')` }}>
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/30 to-transparent"></div>
-                <div className="container mx-auto px-6 lg:px-12 relative z-10">
+            <section id="home" className="h-[80vh] relative flex items-center overflow-hidden">
+                <Image
+                    src="/images/Gemini_Generated_Image_n21a2on21a2on21a.png"
+                    alt="Hero Background"
+                    fill
+                    priority
+                    className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/30 to-transparent z-10"></div>
+                <div className="container mx-auto px-6 lg:px-12 relative z-20">
                     <Swiper
                         modules={[Autoplay, Pagination, EffectFade]}
                         effect="fade"
@@ -185,8 +193,13 @@ const LandingPage = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="rounded-[3rem] overflow-hidden border-4 border-slate-800 shadow-2xl">
-                            <img src="/images/Gemini_Generated_Image_n21a2on21a2on21a.png" alt="Facility" className="w-full h-full object-cover" />
+                        <div className="rounded-[3rem] overflow-hidden border-4 border-slate-800 shadow-2xl relative h-[400px]">
+                            <Image
+                                src="/images/Gemini_Generated_Image_n21a2on21a2on21a.png"
+                                alt="Facility"
+                                fill
+                                className="object-cover"
+                            />
                         </div>
                     </div>
                 </div>
@@ -197,7 +210,7 @@ const LandingPage = () => {
                 <div className="container mx-auto px-6 lg:px-12 max-w-6xl text-center md:text-left">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
                         <div>
-                            <img src="/images/elolamLogo.png" alt="Logo" className="h-8 mb-6 brightness-200 mx-auto md:mx-0" />
+                            <Image src="/images/elolamLogo.png" alt="Logo" width={32} height={32} className="mb-6 brightness-200 mx-auto md:mx-0 object-contain" />
                             <h4 className="text-white font-black text-lg mb-4 leading-tight uppercase tracking-tight">El-Olam Special Home & Rehabilitation Center</h4>
                             <p className="text-sm font-medium max-w-xs mx-auto md:mx-0">Nurturing environments where special needs children flourish.</p>
                         </div>

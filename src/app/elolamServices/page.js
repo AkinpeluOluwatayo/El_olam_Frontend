@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import {
     ArrowLeft, Brain, MessageSquare, BookOpen,
     Heart, Activity, Zap
@@ -55,7 +56,7 @@ const ElolamServices = () => {
         "/images/Service1.jpeg",
         "/images/Service2.jpeg",
         "/images/Service3.jpeg",
-        "/images/Service4.jpeg",
+        "/images/Sevice4.jpeg",
         "/images/Service5.jpeg",
         "/images/Service6.jpeg",
         "/images/Service7.jpeg",
@@ -134,15 +135,16 @@ const ElolamServices = () => {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="relative group overflow-hidden rounded-[2rem] bg-slate-800 shadow-2xl cursor-zoom-in"
+                                className="relative group overflow-hidden rounded-[2rem] bg-slate-800 shadow-2xl cursor-zoom-in min-h-[300px]"
                             >
-                                <img
+                                <Image
                                     src={img}
                                     alt="Facility activity"
-                                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
-                                    onError={(e) => { e.target.src = 'https://via.placeholder.com/400x500?text=Activity+Photo' }}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
-                                <div className="absolute inset-0 bg-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div className="absolute inset-0 bg-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                             </motion.div>
                         ))}
                     </div>
