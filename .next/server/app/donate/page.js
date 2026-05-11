@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/donate/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__04_a2-l._.js")
+R.c("server/chunks/ssr/116s_next_dist_esm_build_templates_app-page_0v7nde1.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0mlgth6._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__06z20wk._.js")
+R.c("server/chunks/ssr/El_olam_Frontend_0v~ul.u._.js")
+R.c("server/chunks/ssr/116s_next_dist_client_components_0k2_uf4._.js")
+R.c("server/chunks/ssr/116s_next_dist_client_components_builtin_forbidden_0x0u3l~.js")
+R.c("server/chunks/ssr/116s_next_dist_client_components_builtin_unauthorized_0zn~yft.js")
+R.c("server/chunks/ssr/116s_next_dist_client_components_builtin_global-error_0bvjvyw.js")
+R.c("server/chunks/ssr/El_olam_Frontend__next-internal_server_app_donate_page_actions_04eli_v.js")
+R.m(77853)
+module.exports=R.m(77853).exports
