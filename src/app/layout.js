@@ -7,7 +7,8 @@ export const metadata = {
     description: "Nurturing Every Unique Potential - Providing compassionate care and specialized rehabilitation for children with neurodiverse needs.",
 
     verification: {
-        google: '<meta name="google-site-verification" content="s4-GmRtqfafuXKy_ZMihptT3EH-OD1PhAfr1Szq_agw" />',
+
+        google: "s4-GmRtqfafuXKy_ZMihptT3EH-OD1PhAfr1Szq_agw",
     },
 };
 
