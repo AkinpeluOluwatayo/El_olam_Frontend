@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Heart, Globe, Landmark, Copy, ArrowRight, ArrowLeft } from 'lucide-react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 
 const AccountCard = ({ acc, onCopy, color }) => {
@@ -85,7 +85,6 @@ const Donate = () => {
                 </button>
             </div>
 
-            <Toaster position="bottom-center" reverseOrder={false} />
 
 
             <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
