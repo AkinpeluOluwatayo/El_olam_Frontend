@@ -1,8 +1,20 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/aboutUs/page": "/aboutUs",
+  "/about/page": "/about",
+  "/admission/page": "/admission",
   "/donate/page": "/donate",
-  "/elolamServices/page": "/elolamServices",
-  "/page": "/"
+  "/gallery/page": "/gallery",
+  "/get-involved/page": "/get-involved",
+  "/page": "/",
+  "/programs/page": "/programs",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/sponsor-a-child/page": "/sponsor-a-child",
+  "/what-we-do/occupational-therapy/page": "/what-we-do/occupational-therapy",
+  "/what-we-do/self-care/page": "/what-we-do/self-care",
+  "/what-we-do/special-ed-advocacy/page": "/what-we-do/special-ed-advocacy",
+  "/what-we-do/speech-therapy/page": "/what-we-do/speech-therapy",
+  "/what-we-do/therapeutic-services/page": "/what-we-do/therapeutic-services",
+  "/what-we-do/vocational-training/page": "/what-we-do/vocational-training"
 }

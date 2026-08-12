@@ -1,3 +1,0 @@
-module.exports=[60411,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(33798);a.n(d("[project]/El_olam_Frontend/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},89097,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(33798);a.n(d("[project]/El_olam_Frontend/node_modules/next/dist/client/components/builtin/global-error.js"))},7151,a=>{"use strict";a.i(60411);var b=a.i(89097);a.n(b)},30400,a=>{a.n(a.i(7151))}];
-
-//# sourceMappingURL=116s_next_dist_client_components_builtin_global-error_0bvjvyw.js.map

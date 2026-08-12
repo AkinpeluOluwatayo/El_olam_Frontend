@@ -42,10 +42,16 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
-      "page": "/aboutUs",
-      "regex": "^/aboutUs(?:/)?$",
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/aboutUs(?:/)?$"
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
+      "page": "/admission",
+      "regex": "^/admission(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admission(?:/)?$"
     },
     {
       "page": "/donate",
@@ -54,10 +60,76 @@
       "namedRegex": "^/donate(?:/)?$"
     },
     {
-      "page": "/elolamServices",
-      "regex": "^/elolamServices(?:/)?$",
+      "page": "/gallery",
+      "regex": "^/gallery(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/elolamServices(?:/)?$"
+      "namedRegex": "^/gallery(?:/)?$"
+    },
+    {
+      "page": "/get-involved",
+      "regex": "^/get\\-involved(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-involved(?:/)?$"
+    },
+    {
+      "page": "/programs",
+      "regex": "^/programs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/programs(?:/)?$"
+    },
+    {
+      "page": "/robots.txt",
+      "regex": "^/robots\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    },
+    {
+      "page": "/sponsor-a-child",
+      "regex": "^/sponsor\\-a\\-child(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sponsor\\-a\\-child(?:/)?$"
+    },
+    {
+      "page": "/what-we-do/occupational-therapy",
+      "regex": "^/what\\-we\\-do/occupational\\-therapy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-we\\-do/occupational\\-therapy(?:/)?$"
+    },
+    {
+      "page": "/what-we-do/self-care",
+      "regex": "^/what\\-we\\-do/self\\-care(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-we\\-do/self\\-care(?:/)?$"
+    },
+    {
+      "page": "/what-we-do/special-ed-advocacy",
+      "regex": "^/what\\-we\\-do/special\\-ed\\-advocacy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-we\\-do/special\\-ed\\-advocacy(?:/)?$"
+    },
+    {
+      "page": "/what-we-do/speech-therapy",
+      "regex": "^/what\\-we\\-do/speech\\-therapy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-we\\-do/speech\\-therapy(?:/)?$"
+    },
+    {
+      "page": "/what-we-do/therapeutic-services",
+      "regex": "^/what\\-we\\-do/therapeutic\\-services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-we\\-do/therapeutic\\-services(?:/)?$"
+    },
+    {
+      "page": "/what-we-do/vocational-training",
+      "regex": "^/what\\-we\\-do/vocational\\-training(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-we\\-do/vocational\\-training(?:/)?$"
     }
   ],
   "dataRoutes": [],

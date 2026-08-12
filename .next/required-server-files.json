@@ -63,7 +63,12 @@
           "search": ""
         }
       ],
-      "remotePatterns": [],
+      "remotePatterns": [
+        {
+          "protocol": "https",
+          "hostname": "images.unsplash.com"
+        }
+      ],
       "qualities": [
         75
       ],
@@ -104,7 +109,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/home/akinpelu-oluwatayo/Documents/WebstormProjectsssss/El_olam_Frontend",
+    "outputFileTracingRoot": "/home/akinpelu-oluwatayo/Documents/WebstormProjectsssss/El_olam_Frontend/El_olam_Frontend",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -304,12 +309,12 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.js",
     "turbopack": {
-      "root": "/home/akinpelu-oluwatayo/Documents/WebstormProjectsssss/El_olam_Frontend"
+      "root": "/home/akinpelu-oluwatayo/Documents/WebstormProjectsssss/El_olam_Frontend/El_olam_Frontend"
     },
     "distDirRoot": ".next"
   },
   "appDir": "/home/akinpelu-oluwatayo/Documents/WebstormProjectsssss/El_olam_Frontend/El_olam_Frontend",
-  "relativeAppDir": "El_olam_Frontend",
+  "relativeAppDir": "",
   "files": [
     ".next/routes-manifest.json",
     ".next/server/pages-manifest.json",

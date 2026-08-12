@@ -1,8 +1,20 @@
 {
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/aboutUs/page": "app/aboutUs/page.js",
+  "/about/page": "app/about/page.js",
+  "/admission/page": "app/admission/page.js",
   "/donate/page": "app/donate/page.js",
-  "/elolamServices/page": "app/elolamServices/page.js",
-  "/page": "app/page.js"
+  "/gallery/page": "app/gallery/page.js",
+  "/get-involved/page": "app/get-involved/page.js",
+  "/page": "app/page.js",
+  "/programs/page": "app/programs/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/sponsor-a-child/page": "app/sponsor-a-child/page.js",
+  "/what-we-do/occupational-therapy/page": "app/what-we-do/occupational-therapy/page.js",
+  "/what-we-do/self-care/page": "app/what-we-do/self-care/page.js",
+  "/what-we-do/special-ed-advocacy/page": "app/what-we-do/special-ed-advocacy/page.js",
+  "/what-we-do/speech-therapy/page": "app/what-we-do/speech-therapy/page.js",
+  "/what-we-do/therapeutic-services/page": "app/what-we-do/therapeutic-services/page.js",
+  "/what-we-do/vocational-training/page": "app/what-we-do/vocational-training/page.js"
 }
