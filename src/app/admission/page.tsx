@@ -2,7 +2,6 @@
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, ClipboardCheck, UserCheck, GraduationCap, CheckCircle } from "lucide-react";
 
@@ -85,15 +84,25 @@ export default function AdmissionPage() {
                             admissions process ensures every child is thoroughly assessed and
                             enrolled into the program that best supports their unique needs.
                         </p>
-                        <a
-                            href="https://wa.me/2348122646941"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-sm text-xs font-bold uppercase tracking-widest shadow-xl transition-all"
-                        >
-                            <MessageCircle className="size-4" />
-                            Chat With Us on WhatsApp
-                        </a>
+                        <div className="flex flex-wrap items-center gap-4">
+                            <a
+                                href="https://wa.me/2348122646941"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-sm text-xs font-bold uppercase tracking-widest shadow-xl transition-all"
+                            >
+                                <MessageCircle className="size-4" />
+                                Chat With Us on WhatsApp
+                            </a>
+                            <a
+                                href="https://elolamtuitionpaymentlink.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-3 bg-brand-accent hover:bg-amber-600 text-white px-8 py-4 rounded-sm text-xs font-bold uppercase tracking-widest shadow-xl transition-all"
+                            >
+                                Apply
+                            </a>
+                        </div>
                     </div>
                 </section>
 
@@ -212,6 +221,14 @@ export default function AdmissionPage() {
                             >
                                 <MessageCircle className="size-4" />
                                 Chat on WhatsApp
+                            </a>
+                            <a
+                                href="https://elolamtuitionpaymentlink.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-brand-accent hover:bg-amber-600 text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest shadow-lg transition-all rounded-sm"
+                            >
+                                Apply
                             </a>
                             <Link
                                 href="/donate"

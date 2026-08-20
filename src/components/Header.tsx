@@ -38,6 +38,10 @@ type NavItem = {
 
 const navItems: NavItem[] = [
     {
+        label: "Home",
+        to: "/",
+    },
+    {
         label: "Who We Are",
         children: [
             {
@@ -215,8 +219,8 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
 
                                     <ChevronDown
                                         className={`size-4 transition-transform ${expanded === item.label
-                                                ? "rotate-180"
-                                                : ""
+                                            ? "rotate-180"
+                                            : ""
                                             }`}
                                     />
                                 </button>
