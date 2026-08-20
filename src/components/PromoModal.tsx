@@ -8,14 +8,19 @@ export function PromoModal() {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        const hasSeen = localStorage.getItem("hasSeenPromoModal");
-        if (!hasSeen) {
+        const lastSeenTimestamp = localStorage.getItem("hasSeenPromoModal");
+        const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000;
+
+        if (
+            !lastSeenTimestamp ||
+            Date.now() - Number(lastSeenTimestamp) > ONE_DAY_IN_MS
+        ) {
             setIsOpen(true);
         }
     }, []);
 
     const handleClose = () => {
-        localStorage.setItem("hasSeenPromoModal", "true");
+        localStorage.setItem("hasSeenPromoModal", Date.now().toString());
         setIsOpen(false);
     };
 
