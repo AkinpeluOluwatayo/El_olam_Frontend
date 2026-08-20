@@ -5,9 +5,9 @@ import Link from "next/link";
 import { CheckCircle, Heart, BookOpen, Stethoscope, Users } from "lucide-react";
 
 export const metadata = {
-    title: "El-Olam Special Home & Rehabilitation Center | Unlocking Every Child's Potential",
+    title: "Leading Rehabilitation Center in Nigeria | Serving Ogun, Lagos & South-West",
     description:
-        "Offering occupational therapy, assistive technologies, and specialized education scholarships to ensure no child with disabilities is left behind.",
+        "Premier rehabilitation center in Nigeria. Offering confidential addiction recovery, mental health care, and residential support serving Mowe, Ogun, Lagos, and nationwide.",
 };
 
 const pillars = [
@@ -37,10 +37,10 @@ export default function HomePage() {
             <Header />
             <main>
                 <RichPage
-                    eyebrow="Children with Disabilities — El-Olam Rehabilitation"
-                    title="Unlocking potential for every child."
-                    lede="Offering occupational therapy, assistive technologies, and specialized education scholarships to ensure no child is left behind."
-                    heroImageAlt="Children receiving therapy at El-Olam"
+                    eyebrow="Leading Rehabilitation Center in Nigeria"
+                    title="Premier Rehabilitation & Recovery Center in Nigeria"
+                    lede="As one of the leading private rehabilitation centers in Nigeria, we provide structured, evidence-based care for individuals and families across the country..."
+                    heroImageAlt="Children receiving therapy at El-Olam Rehabilitation Center"
                     stats={[
                         { value: "10k+", label: "Children Assisted" },
                         { value: "$4.2M", label: "Therapy Funding Raised" },
@@ -49,10 +49,44 @@ export default function HomePage() {
                     ]}
                     sections={[
                         {
-                            eyebrow: "What We Believe",
-                            heading: "Every child deserves the chance to thrive.",
+                            eyebrow: "Nationwide Care",
+                            heading: "Trusted Residential Rehabilitation Services Across Nigeria",
                             image: "/images/Service1.jpeg",
-                            imageAlt: "Child with occupational therapist at session",
+                            imageAlt: "Serene rehabilitation facility at El-Olam",
+                            body: (
+                                <>
+                                    <p>
+                                        As one of the leading private rehabilitation centers in Nigeria,
+                                        we provide structured, evidence-based care for individuals and
+                                        families across the country. Our facility offers confidential addiction
+                                        recovery, mental health care, occupational therapy, and specialized
+                                        residential support serving Mowe, Ogun, Lagos, and nationwide.
+                                    </p>
+                                    <p>
+                                        We welcome clients from across all 36 states, with seamless admission
+                                        processes, airport pick-ups (from Murtala Muhammed International Airport, Lagos),
+                                        and serene facilities designed for uninterrupted recovery away from home.
+                                    </p>
+                                    <div className="flex flex-col gap-2 pt-2">
+                                        {[
+                                            "Airport pick-ups from Murtala Muhammed International Airport, Lagos",
+                                            "Seamless admission processes for clients across all 36 states",
+                                            "Serene, confidential environment designed for uninterrupted recovery",
+                                        ].map((item) => (
+                                            <div key={item} className="flex items-start gap-2 text-sm">
+                                                <CheckCircle className="size-4 text-brand-primary mt-0.5 flex-none" />
+                                                <span>{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            ),
+                        },
+                        {
+                            eyebrow: "What We Believe",
+                            heading: "Every child and individual deserves the chance to thrive.",
+                            image: "/images/Service2.jpeg",
+                            imageAlt: "Child with therapist at session",
                             body: (
                                 <>
                                     <p>

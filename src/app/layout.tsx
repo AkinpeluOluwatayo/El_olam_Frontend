@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "El-Olam Special Home & Rehabilitation Center",
+    title: "Leading Rehabilitation Center in Nigeria | Serving Ogun, Lagos & South-West",
     description:
-        "Offering occupational therapy, assistive technologies, and specialized education scholarships to ensure no child with disabilities is left behind.",
+        "Premier rehabilitation center in Nigeria. Offering confidential addiction recovery, mental health care, and residential support serving Mowe, Ogun, Lagos, and nationwide.",
     verification: {
         google: "s4-GmRtqfafuXKy_ZMihptT3EH-OD1PhAfr1Szq_agw",
     },
