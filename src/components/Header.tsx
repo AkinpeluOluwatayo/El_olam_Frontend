@@ -108,7 +108,7 @@ const navItems: NavItem[] = [
             },
             {
                 label: "FAQs",
-                to: "/resources#faqs",
+                to: "/faqs",
             },
         ],
     },

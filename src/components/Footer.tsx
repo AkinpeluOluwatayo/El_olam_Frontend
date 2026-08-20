@@ -9,7 +9,7 @@ const footerLinks = {
     Organization: [
         { label: "About Us", href: "/about" },
         { label: "Leadership", href: "/about#leadership" },
-        { label: "Annual Report", href: "/about#report" },
+        { label: "FAQs", href: "/faqs" },
         { label: "Partners", href: "/about#partners" },
     ],
     Programs: [
