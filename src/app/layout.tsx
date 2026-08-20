@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PromoModal } from "@/components/PromoModal";
 
 export const metadata: Metadata = {
     title: "Leading Rehabilitation Center in Nigeria | Serving Ogun, Lagos & South-West",
@@ -18,6 +19,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className="antialiased min-h-screen bg-brand-surface font-sans">
+                <PromoModal />
                 {children}
             </body>
         </html>
